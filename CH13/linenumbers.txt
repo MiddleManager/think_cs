@@ -1,0 +1,12 @@
+1     I like apples
+2     Snakes on a plane
+3     Kazakhstan is the best
+4     I like apples
+5     Snakes on a plane
+6     Kazakhstan is the best
+7     I like apples
+8     Snakes on a plane
+9     Kazakhstan is the best
+10    I like apples
+11    Snakes on a plane
+12    Kazakhstan is the best
