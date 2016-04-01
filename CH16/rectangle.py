@@ -36,21 +36,63 @@ class Rectangle():
         """ Flips self.height and self.width """
         self.height, self.width = self.width, self.height
 
+    def contains(self, p):
+
+        if not (self.corner.x <= p.x and p.x < self.corner.x + self.width):
+            #print("x is false")
+            return False
+
+        if not (self.corner.y <= p.y and p.y < self.corner.y + self.height):
+            #print("y is false")
+            return False
+
+        return True
 
 
-box = Rectangle(point.Point(0, 0), 100, 200)
-bomb = Rectangle(point.Point(100, 80), 5, 10)    # In my video game
+    def rect_overlap(self, rect):
+        """ Checks if two points collide """
+        rect_x = rect.corner.x + rect.width
+        rect_y = rect.corner.y + rect.height
 
-print("box: ", box)
-print("bomb: ", bomb)
+        if not (self.corner.x <= rect_x and rect_x < self.corner.x + self.width):
+            return False
 
-box.grow(12, 23)
-box.move(-54, 56)
-print("Updating box: ---")
-print("box: ", box)
+        if not (self.corner.y <= rect_y and rect_y < self.corner.y + self.height):
+            return False
 
-print("box area: ", str(box.area()))
-print("box perimeter: ", str(box.perimeter()))
-print("Flipping box: ---")
-box.flip()
-print("box: ", box)
+        return True
+
+def test_suite():
+    r = Rectangle(point.Point(0, 0), 10, 5)
+    t.test(r.contains(point.Point(0, 0)))
+    t.test(r.contains(point.Point(3, 3)))
+    t.test(not r.contains(point.Point(3, 7)))
+    t.test(not r.contains(point.Point(3, 5)))
+    t.test(r.contains(point.Point(3, 4.99999)))
+    t.test(not r.contains(point.Point(-3, -3)))
+
+    """
+    box = Rectangle(point.Point(0, 0), 2, 3)
+    bomb = Rectangle(point.Point(0, 0), 1, 2)
+
+    print("Collision {0}: {1}".format(bomb, box.point_collide(bomb)))
+
+    #print(box.point_collide(bomb))
+
+
+    print("box: ", box)
+    print("bomb: ", bomb)
+
+    box.grow(12, 23)
+    box.move(-54, 56)
+    print("Updating box: ---")
+    print("box: ", box)
+
+    print("box area: ", str(box.area()))
+    print("box perimeter: ", str(box.perimeter()))
+    print("Flipping box: ---")
+    box.flip()
+    print("box: ", box)
+    """
+
+test_suite()

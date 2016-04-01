@@ -35,7 +35,7 @@ class Point():
     def reflect_x(self):
         """ Returns a reflection of x """
         return Point(-self.x, self.y)
-
+"""
 def testing_suite():
     print("Beginning Tests\n--------")
     point1 = Point(1, 2)
@@ -45,3 +45,4 @@ def testing_suite():
 
 
 testing_suite()
+"""
